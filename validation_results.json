@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "timestamp": "2025-06-23T19:21:17.549491",
+    "timestamp": "2025-06-23T19:46:36.009541",
     "random_seed": 42,
-    "runtime_seconds": 4.989085912704468,
+    "runtime_seconds": 5.033112049102783,
     "python_version": "1.24.4",
-    "results_hash": "c56e309647857a588537e0930c24892b"
+    "results_hash": "672c6d7545513ee2e10033a3ddf1228d"
   },
   "results": {
     "gravitational_waves": {
@@ -46,6 +46,7 @@
     },
     "complete_framework": {
       "bounce_mechanism": {
-        "eigenvalues": [
-          [
-            
+        "basic_analysis": {
+          "eigenvalues": [
+            [
+              
