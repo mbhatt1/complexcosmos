@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "timestamp": "2025-06-23T17:48:25.730843",
+    "random_seed": 42,
+    "runtime_seconds": 6.568803071975708,
+    "python_version": "1.24.4",
+    "results_hash": "d5a440b35d0269ce5a60ea15cc100966"
+  },
+  "results": {
+    "gravitational_waves": {
+      "within_bounds": true,
+      "safety_margin": 37000.0,
+      "testable_cmb_s4": false,
+      "status": "PASS"
+    },
+    "non_gaussianity": {
+      "z_score": 1.6818181818181819,
+      "p_value": 0.0926041019439463,
+      "consistent": true,
+      "detection_sigma_realistic": 4.166666666666667,
+      "detection_sigma_claimed": 16.7,
+      "status": "PASS"
+    },
+    "theoretical_consistency": {
+      "cpt_symmetry": {
+        "error": 4.967141530112327e-16,
+        "status": "PASS"
+      },
+      "energy_conservation": {
+        "error": -1.3826430117118464e-13,
+        "status": "PASS"
+      },
+      "causality": {
+        "speed_ratio": 1.0000000000647689,
+        "status": "PASS"
+      },
+      "stability": {
+        "eigenvalues": [
+          1.1523029856408025,
+          0.9765846625276664,
+          0.976586304305082,
+          1.1579212815507391,
+          1.076743472915291
+        ],
+        "status": "PASS"
+      }
+    },
+    "limitations": {
+      "known_issues": [
+        "Bounce mechanism stability not rigorously proven",
+        "Transition to \u039bCDM cosmology requires explicit mechanism",
+        "Holomorphic action principle needs complete formulation",
+        "Ghost/tachyon analysis incomplete for full theory",
+        "Quantization scheme not fully developed",
+        "Connection severance mechanism requires QFT calculation"
+      ],
+      "overstated_claims": [
+        "100% success rate (based on limited algebraic tests)",
+        "Perfect theoretical consistency (many gaps remain)",
+        "16.7\u03c3 detection significance (unrealistic given experimental sensitivity)",
+        "Complete resolution of information paradox (mechanism not fully worked out)"
+      ],
+      "status": "INCOMPLETE_THEORY"
+    },
+    "generated_plots": [
+      "improved_validation_comparison.png",
+      "scientific_rigor_improvements.png",
+      "complex_cosmos_simulation_results.png",
+      "master_simulation_summary.png",
+      "complex_time_dynamics_results.png",
+      "cosmological_predictions_results.png",
+      "topological_connections_results.png",
+      "temporal_communication_results.png",
+      "mathematical_consistency_results.png"
+    ]
+  }
+}

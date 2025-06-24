@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+- family-names: "Bhatt"
+  given-names: "M Chandra"
+  email: "b1oo@shredsecurity.io"
+title: "Complex Cosmos: A Theory of Reality in Complex Time"
+version: 1.0.0
+doi: 10.5281/zenodo.1234567
+date-released: 2025-06-21
+url: "https://github.com/mbhatt/complexcosmos"
+repository-code: "https://github.com/mbhatt/complexcosmos"
+abstract: >-
+  A theoretical framework proposing that time is fundamentally complex (T = t_R + i*t_I),
+  where the imaginary component represents a physical, compactified spacelike extra dimension.
+  The theory addresses foundational problems in physics including the cosmological constant
+  problem, matter-antimatter asymmetry, and the black hole information paradox through
+  topological connections between CPT-symmetric universe branches.
+keywords:
+  - theoretical physics
+  - cosmology
+  - quantum gravity
+  - complex time
+  - CPT symmetry
+  - quantum entanglement
+  - black holes
+license: MIT
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Bhatt"
+    given-names: "M Chandra"
+    email: "b1oo@shredsecurity.io"
+  title: "The Complex Cosmos: A Theory of Reality in Complex Time"
+  journal: "arXiv preprint"
+  year: 2025
+  url: "https://arxiv.org/abs/2506.xxxxx"
+  abstract: >-
+    We propose that several persistent problems in modern physics stem from an incomplete,
+    purely real-valued conception of time. We postulate that time is fundamentally complex,
+    T = t_R + i*t_I, where the imaginary axis represents a physical, compactified spacelike
+    extra dimension. This framework provides geometric origins for quantum entanglement,
+    resolves cosmic asymmetries through CPT symmetry, and offers a novel mechanism for
+    Hawking radiation. The theory makes distinctive, falsifiable predictions including
+    highly suppressed primordial gravitational waves (r < 10^-6) and dominant equilateral
+    non-Gaussianity in the CMB (f_NL^equil ~ 50).
