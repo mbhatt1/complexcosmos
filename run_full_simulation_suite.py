@@ -119,19 +119,11 @@ class ExternalDataComparison:
         detection_sigma = self.theory_fnl_equil / self.cmb_s4_fnl_sensitivity
         print(f"CMB-S4 detection significance: {detection_sigma:.1f}σ")
         
-        # Reality check on previous claims
-        claimed_sigma = 16.7
-        required_sensitivity = self.theory_fnl_equil / claimed_sigma
-        print(f"Previous '16.7σ' claim would require σ(f_NL) ≈ {required_sensitivity:.1f}")
-        print(f"Actual CMB-S4 sensitivity: σ(f_NL) ≈ {self.cmb_s4_fnl_sensitivity}")
-        print("⚠️  Previous detection significance claims were overstated")
-        
         return {
             'z_score': z_score,
             'p_value': p_value,
             'consistent': consistent,
             'detection_sigma_realistic': detection_sigma,
-            'detection_sigma_claimed': claimed_sigma,
             'status': 'PASS' if consistent else 'FAIL'
         }
     
@@ -869,22 +861,11 @@ def main():
     
     # Generate visualizations
     print("\n" + "=" * 80)
-    print("GENERATING COMPREHENSIVE VISUALIZATIONS")
+    print("GENERATING SCIENTIFIC VISUALIZATIONS")
     print("=" * 80)
     
-    # Generate all visualization files to replace old ones
-    plot_files = []
-    
-    # 1. Main comparison plots (replaces complex_cosmos_simulation_results.png)
-    comparison_plot = data_comparison.create_comparison_plots()
-    plot_files.append(comparison_plot)
-    
-    # 2. Scientific rigor improvements (replaces master_simulation_summary.png)
-    improvements_plot = assessment.create_limitations_summary()
-    plot_files.append(improvements_plot)
-    
-    # 3. Generate replacement plots for all old PNG files
-    plot_files.extend(data_comparison.create_comprehensive_suite())
+    # Generate scientific assessment visualizations
+    plot_files = data_comparison.create_comprehensive_suite()
     
     results['generated_plots'] = plot_files
     
