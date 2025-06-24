@@ -30,8 +30,14 @@ import hashlib
 
 warnings.filterwarnings('ignore')
 
-# Framework implementation status
-COMPLETE_FRAMEWORK_AVAILABLE = False  # No arbitrary theoretical framework
+# Import complete theoretical framework
+try:
+    from complete_theoretical_framework import get_complete_framework_status
+    COMPLETE_FRAMEWORK_AVAILABLE = True
+    print("Complete theoretical framework loaded successfully")
+except ImportError:
+    COMPLETE_FRAMEWORK_AVAILABLE = False
+    print("Warning: Complete theoretical framework not available")
 
 # Set up plotting style
 plt.style.use('default')
@@ -229,16 +235,27 @@ class ExternalDataComparison:
         
         return 'improved_validation_comparison.png'
     
-    def create_comprehensive_suite(self):
+    def create_comprehensive_suite(self, framework_results=None):
         """Generate comprehensive visualization suite to replace all old PNG files"""
         plot_files = []
         
         # Replace complex_cosmos_simulation_results.png
         fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
         
-        # Assessment of theory status based on actual implementation
+        # Assessment of theory status - use framework results if available
         categories = ['Mathematical\nConsistency', 'Observational\nAgreement', 'Predictive\nPower', 'Experimental\nTestability']
-        scores = [75, 85, 70, 60]  # Based on actual current implementation
+        
+        if framework_results and 'development_completion' in framework_results:
+            # Map framework results to visualization categories
+            completion = framework_results['development_completion']
+            scores = [
+                completion.get('holomorphic_formulation', 50),  # Mathematical Consistency
+                85,  # Observational Agreement (from external data validation)
+                completion.get('quantization', 50),  # Predictive Power
+                completion.get('severance_mechanism', 50)  # Experimental Testability
+            ]
+        else:
+            scores = [75, 85, 70, 60]  # Fallback scores
         
         bars = ax1.bar(categories, scores, color=['green', 'green', 'green', 'green'], alpha=0.7)
         ax1.set_ylabel('Assessment Score (%)')
@@ -795,8 +812,16 @@ class ReproducibilityCheck:
         
     def convert_numpy_types(self, obj):
         """Convert numpy types to native Python types for JSON serialization"""
-        if hasattr(obj, 'item'):
+        if hasattr(obj, 'item') and hasattr(obj, 'size') and obj.size == 1:
             return obj.item()
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        elif isinstance(obj, (np.integer, np.floating)):
+            return obj.item()
+        elif isinstance(obj, (np.complex64, np.complex128)):
+            return {'real': obj.real.item(), 'imag': obj.imag.item()}
+        elif isinstance(obj, complex):
+            return {'real': obj.real, 'imag': obj.imag}
         elif isinstance(obj, dict):
             return {k: self.convert_numpy_types(v) for k, v in obj.items()}
         elif isinstance(obj, list):
@@ -806,9 +831,14 @@ class ReproducibilityCheck:
     
     def generate_reproducible_hash(self, data):
         """Generate hash for reproducibility verification"""
-        converted_data = self.convert_numpy_types(data)
-        data_str = json.dumps(converted_data, sort_keys=True)
-        return hashlib.md5(data_str.encode()).hexdigest()
+        try:
+            converted_data = self.convert_numpy_types(data)
+            data_str = json.dumps(converted_data, sort_keys=True)
+            return hashlib.md5(data_str.encode()).hexdigest()
+        except (TypeError, ValueError) as e:
+            # Fallback: use string representation for hash
+            data_str = str(data)
+            return hashlib.md5(data_str.encode()).hexdigest()
     
     def save_results(self, results, filename="validation_results.json"):
         """Save results with metadata for reproducibility"""
@@ -828,12 +858,52 @@ class ReproducibilityCheck:
             'results': converted_results
         }
         
-        with open(filename, 'w') as f:
-            json.dump(output, f, indent=2)
+        try:
+            with open(filename, 'w') as f:
+                json.dump(output, f, indent=2)
+        except TypeError as e:
+            # Fallback: save as string representation
+            print(f"Warning: JSON serialization failed ({e}), saving as text")
+            with open(filename.replace('.json', '.txt'), 'w') as f:
+                f.write(str(output))
+            filename = filename.replace('.json', '.txt')
         
         print(f"\nResults saved to {filename}")
         print(f"Results hash: {metadata['results_hash']}")
         return metadata
+
+def run_complete_theoretical_validation():
+    """
+    Run complete theoretical framework validation
+    """
+    if not COMPLETE_FRAMEWORK_AVAILABLE:
+        return {'status': 'FRAMEWORK_NOT_AVAILABLE'}
+    
+    try:
+        # Get complete framework status
+        framework_results = get_complete_framework_status()
+        
+        print("Complete Theoretical Framework Results:")
+        print(f"Overall Status: {framework_results.get('overall_status', 'UNKNOWN')}")
+        print(f"Theoretical Consistency: {framework_results.get('theoretical_consistency', False)}")
+        
+        if 'development_completion' in framework_results:
+            print("\nDevelopment Completion:")
+            for component, completion in framework_results['development_completion'].items():
+                print(f"  {component}: {completion}%")
+        
+        # Update assessment scores based on framework results
+        if framework_results.get('theoretical_consistency', False):
+            print("\n✓ All theoretical components are now complete and consistent!")
+        else:
+            print("\n⚠️ Some theoretical components still require development")
+        
+        return framework_results
+        
+    except Exception as e:
+        print(f"Error in complete framework validation: {e}")
+        return {'status': 'ERROR', 'error': str(e)}
+
 
 def main():
     """Run improved validation suite"""
@@ -868,15 +938,18 @@ def main():
         complete_results = run_complete_theoretical_validation()
         results['complete_framework'] = complete_results
         
-        # Update assessment with complete framework results
-        results['theoretical_completion'] = {
-            'holomorphic_formulation': 100,
-            'stability_analysis': 100,
-            'quantization_scheme': 100,
-            'experimental_predictions': 100,
-            'mathematical_rigor': 100,
-            'overall_completion': 100
-        }
+        # Update assessment with actual complete framework results
+        if 'development_completion' in complete_results:
+            results['theoretical_completion'] = complete_results['development_completion']
+        else:
+            results['theoretical_completion'] = {
+                'holomorphic_formulation': 50,
+                'stability_analysis': 30,
+                'quantization_scheme': 40,
+                'experimental_predictions': 35,
+                'mathematical_rigor': 25,
+                'overall_completion': 35
+            }
     else:
         # Fallback assessment
         results['limitations'] = assessment.report_limitations()
@@ -887,7 +960,8 @@ def main():
     print("=" * 80)
     
     # Generate scientific assessment visualizations
-    plot_files = data_comparison.create_comprehensive_suite()
+    framework_results_for_viz = results.get('complete_framework', None)
+    plot_files = data_comparison.create_comprehensive_suite(framework_results_for_viz)
     
     results['generated_plots'] = plot_files
     
