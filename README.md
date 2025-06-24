@@ -96,25 +96,16 @@ The validation suite generates comprehensive scientific visualizations:
 ![Complex Cosmos Simulation Results](complex_cosmos_simulation_results.png)
 *Current assessment of theory status showing development levels across key areas.*
 
-![Master Simulation Summary](master_simulation_summary.png)
-*Scientific summary with acknowledgment of limitations and development requirements.*
+![Observational Constraints Analysis](observational_constraints.png)
+*Comprehensive analysis of observational constraints, detection significance, and experimental sensitivity compared to theoretical predictions.*
 
-### Detailed Module Assessments
+### Physics-Focused Analysis
 
-![Complex Time Dynamics Results](complex_time_dynamics_results.png)
-*Physical analysis of complex time framework showing theoretical issues and key physical scales.*
+![Physical Scales Analysis](physical_scales.png)
+*Key physical scales in the theory, energy regime validity, complex time structure, and topological connection parameters.*
 
-![Cosmological Predictions Results](cosmological_predictions_results.png)
-*Assessment of prediction reliability and experimental testability.*
-
-![Topological Connections Results](topological_connections_results.png)
-*Analysis of topological mechanisms and theoretical challenges.*
-
-![Temporal Communication Results](temporal_communication_results.png)
-*Evaluation of temporal communication mechanisms and associated challenges.*
-
-![Mathematical Consistency Results](mathematical_consistency_results.png)
-*Mathematical rigor assessment and physical consistency across energy scales.*
+![Theoretical Consistency Analysis](theoretical_consistency.png)
+*Mathematical consistency assessment, theoretical challenges, comparison with established theories, and physical consistency tests.*
 
 ### Key Insights from Analysis
 
